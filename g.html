@@ -1,1 +1,672 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>株式投資の学習コミュニティ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --line-green: #06C755;
+            --primary-blue: #0066cc;
+            --dark-blue: #004080;
+            --text-light: #ffffff;
+            --text-gray: #aaaaaa;
+            --bg-dark: #111111;
+            --bg-darker: #000000;
+            --card-bg: #1a1a1a;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: var(--text-light);
+            line-height: 1.6;
+            background-color: var(--bg-dark);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            overflow: hidden;
+        }
+
+        .section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px 0;
+            position: relative;
+        }
+
+        /* ヘッダーセクション */
+        .header {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background-color: var(--bg-darker);
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(0, 102, 204, 0.2), transparent 50%);
+            z-index: 1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 30px;
+            line-height: 1.2;
+            color: var(--text-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-title span {
+            display: inline-block;
+            animation: fadeInUp 0.8s forwards;
+            opacity: 0;
+        }
+
+        .header-title span:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .header-title span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .header-title span:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .header-title .highlight {
+            color: var(--primary-blue);
+            position: relative;
+        }
+
+        .header-title .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background-color: var(--primary-blue);
+            opacity: 0.3;
+        }
+
+        .header-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            color: var(--text-gray);
+            animation: fadeInUp 0.8s forwards;
+            animation-delay: 0.4s;
+            opacity: 0;
+            max-width: 700px;
+        }
+
+        .header-image {
+            max-width: 100%;
+            margin-top: 30px;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1s forwards;
+            animation-delay: 0.5s;
+            opacity: 0;
+        }
+
+        /* 認知バイアスセクション */
+        .biases {
+            background-color: var(--bg-dark);
+            position: relative;
+        }
+
+        .biases::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom right, rgba(0, 102, 204, 0.05), transparent 70%);
+            z-index: 1;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            text-align: center;
+            color: var(--text-light);
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-blue);
+        }
+
+        .bias-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .bias-card {
+            flex: 1 1 300px;
+            max-width: 350px;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border-left: 4px solid var(--primary-blue);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .bias-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .bias-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            position: relative;
+        }
+
+        .bias-card-number {
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            font-size: 5rem;
+            color: rgba(0, 102, 204, 0.1);
+            font-weight: 900;
+        }
+
+        /* コミュニティセクション */
+        .community {
+            background-color: var(--bg-darker);
+            position: relative;
+        }
+
+        .community::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 70% 30%, rgba(0, 102, 204, 0.15), transparent 60%);
+            z-index: 1;
+        }
+
+        .community-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .community-stats {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 30px;
+            margin: 40px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-card {
+            flex: 1 1 200px;
+            padding: 20px;
+            max-width: 300px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+
+        .testimonials {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .testimonial-card {
+            flex: 1 1 300px;
+            max-width: 350px;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 5rem;
+            color: rgba(0, 102, 204, 0.1);
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--text-gray);
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-blue);
+            margin-right: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        /* ボタン */
+        .btn {
+            display: inline-block;
+            background-color: var(--line-green);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(6, 199, 85, 0.3);
+            z-index: 5;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.6s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(6, 199, 85, 0.4);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-large {
+            padding: 18px 50px;
+            font-size: 1.2rem;
+        }
+
+        .btn-center {
+            margin: 30px auto 0;
+            display: block;
+            max-width: 300px;
+        }
+
+        .btn-floating {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            animation: pulse 2s infinite;
+        }
+
+        /* Line アイコン */
+        .line-icon-container {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--line-green);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .line-icon-container:hover {
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .line-icon {
+            width: 35px;
+            height: 35px;
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #ff3b30;
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* フッター */
+        footer {
+            background-color: var(--bg-darker);
+            padding: 60px 0 120px;
+            position: relative;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-blue);
+        }
+
+        .footer-text {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .legal-disclaimers {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* アニメーション */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(6, 199, 85, 0.6);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(6, 199, 85, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(6, 199, 85, 0);
+            }
+        }
+
+        /* レスポンシブデザイン */
+        @media (max-width: 768px) {
+            .header-title {
+                font-size: 2.5rem;
+            }
+
+            .header-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .bias-card, .testimonial-card {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+
+            .line-icon-container {
+                right: 15px;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Line アイコン -->
+    <div class="line-icon-container" onclick="opensite()">
+        <svg class="line-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M32 11.9C32 5.9 25.9 1 18.5 1C11.1 1 5 5.9 5 11.9C5 17.3 9.9 21.8 16.2 22.7C16.6 22.8 17.2 23 17.4 23.3C17.5 23.6 17.5 24.1 17.4 24.4C17.4 24.4 17.3 25.2 17.2 25.4C17.1 25.7 16.9 26.5 18.2 26C19.5 25.5 25 22 27.5 19.1C29.2 17.3 32 15.8 32 11.9Z" fill="white"/>
+            <path d="M13 17.5C13 17.7 12.9 17.8 12.7 17.8H7.7C7.5 17.8 7.4 17.7 7.4 17.5V9.9C7.4 9.7 7.5 9.6 7.7 9.6H9C9.2 9.6 9.3 9.7 9.3 9.9V15.9H12.7C12.9 15.9 13 16 13 16.2V17.5Z" fill="#06C755"/>
+            <path d="M15.8 10.2C15.8 10 15.9 9.9 16.1 9.9H17.4C17.6 9.9 17.7 10 17.7 10.2V17.8C17.7 18 17.6 18.1 17.4 18.1H16.1C15.9 18.1 15.8 18 15.8 17.8V10.2Z" fill="#06C755"/>
+            <path d="M23.5 10.2C23.5 10 23.6 9.9 23.8 9.9H25.1C25.3 9.9 25.4 10 25.4 10.2V14.7L28.6 10.3C28.7 10.2 28.8 10.1 29 10.1H30.4C30.5 10.1 30.6 10.2 30.6 10.2C30.7 10.3 30.7 10.4 30.6 10.5L27.3 14.9L30.8 19.6C30.8 19.7 30.8 19.8 30.8 19.9C30.7 20 30.7 20 30.6 20H29.2C29 20 28.9 19.9 28.8 19.8L25.4 15.1V17.8C25.4 18 25.3 18.1 25.1 18.1H23.8C23.6 18.1 23.5 18 23.5 17.8V10.2Z" fill="#06C755"/>
+            <path d="M21 14.4V13.9C21 12.6 20.3 11.5 18.8 11.5C17.3 11.5 16.6 12.6 16.6 13.9V14.4C16.6 15.7 17.3 16.8 18.8 16.8C20.3 16.8 21 15.7 21 14.4ZM19.2 14.4C19.2 14.9 19.1 15.3 18.8 15.3C18.5 15.3 18.4 15 18.4 14.4V13.9C18.4 13.4 18.5 13 18.8 13C19.1 13 19.2 13.3 19.2 13.9V14.4Z" fill="#06C755"/>
+        </svg>
+        <div class="notification-badge">1</div>
+    </div>
+
+    <!-- 固定ボタン -->
+    <button class="btn btn-floating" onclick="opensite()">LINE コミュニティに参加する</button>
+
+    <!-- ヘッダーセクション -->
+    <section class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="header-title">
+                    <span>株式投資で</span>
+                    <span>多くの<span class="highlight">投資家が陥る</span></span>
+                    <span>認知バイアスとは？</span>
+                </h1>
+                <p class="header-subtitle">投資初心者の90%が、重大な認知バイアスによって合理的な投資判断を妨げられています。あなたはこれらの落とし穴を避けることができますか？</p>
+                <button class="btn btn-large" onclick="opensite()">無料コミュニティに参加する</button>
+                <img class="header-image" src="https://www.tkppena.online/116540.jpg" alt="株式投資の認知バイアス" />
+            </div>
+        </div>
+    </section>
+
+    <!-- 認知バイアスセクション -->
+    <section class="section biases">
+        <div class="container">
+            <h2 class="section-title">投資家が陥りやすい認知バイアス</h2>
+            <p style="text-align: center; margin-bottom: 40px; color: var(--text-gray); max-width: 800px; margin-left: auto; margin-right: auto;">
+                これらの心理的な罠を理解することで、より客観的な投資判断ができるようになります。多くの投資家が知らないうちに以下のバイアスに影響されています。
+            </p>
+            
+            <div class="bias-cards">
+                <div class="bias-card">
+                    <div class="bias-card-number">1</div>
+                    <h3>確証バイアス</h3>
+                    <p>自分の既存の信念や期待に合致する情報だけを重視し、反する情報を無視してしまう傾向。例えば、好きな銘柄の否定的なニュースを軽視してしまいます。</p>
+                </div>
+                
+                <div class="bias-card">
+                    <div class="bias-card-number">2</div>
+                    <h3>損失回避バイアス</h3>
+                    <p>人は利益を得ることよりも、損失を避けることに強く動機づけられます。これにより、損失確定を避けるために下落した株を必要以上に長く保有する傾向があります。</p>
+                </div>
+                
+                <div class="bias-card">
+                    <div class="bias-card-number">3</div>
+                    <h3>群衆心理バイアス</h3>
+                    <p>「みんなが買っているから」という理由だけで投資判断をしてしまう傾向。市場のバブルやパニック時に特に顕著になり、冷静な判断を妨げます。</p>
+                </div>
+                
+                <div class="bias-card">
+                    <div class="bias-card-number">4</div>
+                    <h3>アンカリングバイアス</h3>
+                    <p>最初に接した情報や数値に過度に影響されてしまう傾向。例えば、株価が高値をつけた後、そこからの下落を「割安」と誤って判断してしまいます。</p>
+                </div>
+            </div>
+            
+            <button class="btn btn-center" onclick="opensite()">バイアスについてさらに学ぶ</button>
+        </div>
+    </section>
+
+    <!-- コミュニティセクション -->
+    <section class="section community">
+        <div class="container">
+            <div class="community-content">
+                <h2 class="section-title">投資学習コミュニティに参加しませんか？</h2>
+                
+                <div class="community-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">2,399</div>
+                        <p>本日の新規参加者</p>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-number">15,000+</div>
+                        <p>アクティブメンバー</p>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-number">200+</div>
+                        <p>毎週の学習コンテンツ</p>
+                    </div>
+                </div>
+                
+                <div class="testimonials">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">このコミュニティに参加してから、投資に対する考え方が変わりました。感情に左右されず、より客観的に市場を分析できるようになりました。</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">T.K</div>
+                            <div>田中 健太 / 会社員（40代）</div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">初心者でも分かりやすい解説と、質問にいつでも答えてくれる環境があるので安心です。実践的な知識が身につくと感じています。</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">Y.M</div>
+                            <div>山田 優子 / フリーランス（30代）</div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">以前は感情的に投資判断をしていましたが、コミュニティの学びを通じて、システマティックなアプローチができるようになりました。</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">K.S</div>
+                            <div>佐藤 和樹 / 自営業（50代）</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="btn btn-large btn-center" onclick="opensite()">今すぐ無料で参加する</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer>
+        <div class="footer-content">
+            <h3 class="footer-title">免責事項と法的情報</h3>
+            
+            <div class="legal-disclaimers">
+                <p class="footer-text">当サイトは、投資教育および情報提供のみを目的としており、特定の証券の売買を推奨するものではありません。投資には元本割れのリスクがあります。投資判断は自己責任において行ってください。</p>
+                
+                <p class="footer-text">当コミュニティは、株式市場に関する知識の共有や学習、意見交換を目的としており、特定の投資リターンを約束するものではありません。参加者の投資結果について、当コミュニティは一切の責任を負いません。</p>
+                
+                <p class="footer-text">当サイトはGoogle日本の金融広告ポリシーに準拠して作成されています。株式投資に関連する高利回りや確実な利益を保証する表現は一切含まれておりません。</p>
+                
+                <p class="footer-text">当サービスは20歳以上の方を対象としています。日本国内の金融商品取引法その他関連法規に基づき運営されており、地域によって法規制が異なる場合があります。利用者は各自の地域における法規制を確認する責任があります。</p>
+                
+                <p class="footer-text">© 2023 株式投資学習コミュニティ All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function opensite() {
+            // LINEの公式アカウントやコミュニティへのリンク
+            // 実際のURLに置き換える必要があります
+            window.open('https://line.me/R/ti/p/@YourLineID', '_blank');
+        }
+    </script>
+</body>
+</html>

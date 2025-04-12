@@ -3,145 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>TuruLav - Temukan Cinta Sejatimu</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>SparkCircle - Cerita Cintamu Dimulai Di Sini</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #b241c3;
+            --secondary-color: #ff6b6b;
+            --accent-color: #4ecdc4;
+            --dark-color: #292f36;
+            --light-color: #f7f7f7;
+            --online-color: #4CAF50;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            background-color: #2a0a35;
-            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f0fb;
             overflow-x: hidden;
         }
         
-        .header {
-            background: linear-gradient(135deg, #5c2d91 0%, #2a0a35 100%);
-            padding: 60px 20px;
-            position: relative;
-            overflow: hidden;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-        
-        .header:before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="rgba(255,255,255,0.05)" d="M30,50 Q50,30 70,50 Q50,70 30,50"/></svg>');
-            background-size: 100px;
-            opacity: 0.3;
-        }
-        
-        .couple-image {
-            width: 100%;
-            max-width: 600px;
-            margin: 0 auto 30px;
-            border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-        
-        .header-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-        }
-        
-        .header h1 {
-            font-size: 3.5rem;
-            margin-bottom: 15px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-            line-height: 1.2;
-        }
-        
-        .header h1 span {
-            display: block;
-            font-size: 2rem;
-            color: #ffcc00;
-            margin-bottom: 10px;
-        }
-        
-        .header p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-        
-        .english-text {
-            position: absolute;
-            top: 30px;
-            right: 30px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: rgba(255,255,255,0.8);
-            text-transform: uppercase;
-            writing-mode: vertical-rl;
-            transform: rotate(180deg);
-        }
-        
         .container {
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #8a2be2 100%);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            box-shadow: 0 5px 20px rgba(178, 65, 195, 0.3);
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn:hover {
+            background-color: #ff8c8c;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+        }
+        
+        .btn:active::after {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .whatsapp-btn {
+            background-color: #25D366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
         }
         
         .section {
-            background-color: rgba(92, 45, 145, 0.3);
-            border-radius: 15px;
-            padding: 40px;
-            margin-bottom: 30px;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255,255,255,0.1);
+            padding: 60px 0;
         }
         
         .section-title {
-            color: #ffcc00;
-            margin-bottom: 30px;
-            font-size: 2.2rem;
+            font-size: 2rem;
             text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary-color);
             position: relative;
         }
         
-        .section-title:after {
+        .section-title::after {
             content: '';
-            display: block;
-            width: 80px;
-            height: 3px;
-            background-color: #ff5722;
-            margin: 15px auto;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
         }
         
-        .members-grid {
+        .members {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
             margin-top: 40px;
         }
         
         .member-card {
-            background-color: rgba(42, 10, 53, 0.7);
+            background-color: white;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
         .member-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(178, 65, 195, 0.4);
+            box-shadow: 0 15px 30px rgba(178, 65, 195, 0.2);
         }
         
         .member-img {
@@ -155,193 +165,139 @@
         }
         
         .member-name {
-            font-weight: bold;
             font-size: 1.3rem;
-            color: #ffcc00;
-            margin-bottom: 8px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
         
-        .member-status {
+        .online-status {
+            display: flex;
+            align-items: center;
+            font-size: 0.8rem;
+            color: var(--online-color);
+        }
+        
+        .online-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--online-color);
+            border-radius: 50%;
+            margin-right: 5px;
             display: inline-block;
-            background-color: #4caf50;
-            color: white;
-            font-size: 0.9rem;
-            padding: 4px 12px;
-            border-radius: 15px;
-            margin-bottom: 15px;
         }
         
-        .member-bio {
-            font-size: 1rem;
-            color: rgba(255,255,255,0.8);
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-        
-        .btn {
-            display: inline-block;
-            background-color: #ff5722;
-            color: white;
-            padding: 15px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            text-align: center;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            font-size: 1.1rem;
-            box-shadow: 0 5px 15px rgba(255, 87, 34, 0.4);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .btn:hover {
-            background-color: #e64a19;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 87, 34, 0.6);
-        }
-        
-        .btn-whatsapp {
-            background-color: #25D366;
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
-        }
-        
-        .btn-whatsapp:hover {
-            background-color: #128C7E;
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.6);
-        }
-        
-        .btn-center {
-            display: block;
-            margin: 40px auto;
-            max-width: 300px;
+        .member-quote {
+            font-size: 0.95rem;
+            color: #666;
+            font-style: italic;
+            margin-top: 10px;
         }
         
         .stats {
             display: flex;
-            justify-content: space-around;
             flex-wrap: wrap;
+            justify-content: space-around;
             margin: 40px 0;
+            text-align: center;
         }
         
-        .stat-item {
-            text-align: center;
+        .stat {
             padding: 20px;
             flex: 1;
             min-width: 200px;
+            margin: 10px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
         .stat-number {
-            font-size: 3rem;
-            font-weight: bold;
-            color: #ffcc00;
-            margin-bottom: 10px;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 5px;
         }
         
         .stat-label {
-            color: rgba(255,255,255,0.8);
-            font-size: 1.1rem;
+            font-size: 0.9rem;
+            color: #666;
         }
         
         .testimonials {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 30px;
-            margin-top: 40px;
         }
         
         .testimonial {
-            background-color: rgba(42, 10, 53, 0.7);
+            background: linear-gradient(135deg, white 0%, #f7f7f7 100%);
             padding: 30px;
             border-radius: 15px;
-            position: relative;
-            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
         }
         
-        .testimonial:before {
-            content: '"';
-            font-size: 6rem;
-            color: rgba(255, 204, 0, 0.1);
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            line-height: 1;
-        }
-        
-        .testimonial-img {
+        .testimonial img {
             width: 100px;
             height: 100px;
             border-radius: 50%;
             object-fit: cover;
-            float: right;
-            margin-left: 20px;
-            margin-bottom: 20px;
-            border: 3px solid #ffcc00;
+            margin: 0 auto 20px;
+            border: 5px solid var(--primary-color);
         }
         
-        .testimonial-text {
+        .testimonial p {
             font-style: italic;
-            color: rgba(255,255,255,0.9);
-            line-height: 1.8;
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 1;
+            color: #555;
+        }
+        
+        .how-it-works {
+            margin-top: 60px;
         }
         
         .steps {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-between;
+            justify-content: space-around;
             margin-top: 40px;
         }
         
         .step {
-            flex: 0 0 calc(33.333% - 20px);
+            flex: 1;
+            min-width: 250px;
             text-align: center;
-            margin-bottom: 40px;
+            padding: 30px;
+            margin: 15px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             position: relative;
         }
         
         .step-number {
-            display: inline-block;
-            width: 60px;
-            height: 60px;
-            background-color: #ff5722;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
             color: white;
             border-radius: 50%;
-            font-size: 1.8rem;
-            font-weight: bold;
-            line-height: 60px;
-            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
         }
         
-        .step-title {
-            font-weight: bold;
-            color: #ffcc00;
+        .step h3 {
+            margin-top: 15px;
             margin-bottom: 15px;
-            font-size: 1.4rem;
-        }
-        
-        .step-desc {
-            color: rgba(255,255,255,0.8);
-            line-height: 1.8;
-        }
-        
-        .footer {
-            background-color: #1a0521;
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-            margin-top: 60px;
-        }
-        
-        .disclaimer {
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.6);
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.8;
+            color: var(--primary-color);
         }
         
         .whatsapp-float {
@@ -349,267 +305,323 @@
             right: 30px;
             top: 50%;
             transform: translateY(-50%);
-            z-index: 100;
+            z-index: 1000;
         }
         
-        .whatsapp-float-btn {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 70px;
-            height: 70px;
+        .whatsapp-icon {
+            display: block;
+            width: 60px;
+            height: 60px;
             background-color: #25D366;
             color: white;
             border-radius: 50%;
             text-align: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            line-height: 60px;
+            font-size: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             position: relative;
-            transition: all 0.3s;
             animation: pulse 2s infinite;
         }
         
-        .whatsapp-float-btn:hover {
-            background-color: #128C7E;
-            transform: scale(1.1) translateY(-5px);
-        }
-        
-        .whatsapp-float-icon {
-            font-size: 35px;
-        }
-        
-        .whatsapp-float-badge {
+        .notification {
             position: absolute;
             top: -5px;
             right: -5px;
-            background-color: #ff5722;
+            width: 20px;
+            height: 20px;
+            background-color: #FF5252;
             color: white;
-            width: 30px;
-            height: 30px;
             border-radius: 50%;
-            font-size: 14px;
+            font-size: 12px;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             font-weight: bold;
-            animation: pulse 2s infinite;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
         
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
         }
         
-        .highlight {
-            color: #ffcc00;
-            font-weight: bold;
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        .disclaimer {
+            font-size: 0.8rem;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
         }
         
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2.5rem;
+            .section-title {
+                font-size: 1.8rem;
             }
             
-            .header h1 span {
-                font-size: 1.5rem;
+            .members, .testimonials {
+                grid-template-columns: 1fr;
             }
             
-            .english-text {
-                position: static;
-                writing-mode: horizontal-tb;
-                transform: none;
-                margin-bottom: 20px;
-            }
-            
-            .members-grid {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            }
-            
-            .step {
-                flex: 0 0 100%;
-                margin-bottom: 30px;
+            .steps {
+                flex-direction: column;
             }
             
             .whatsapp-float {
-                right: 15px;
-            }
-            
-            .whatsapp-float-btn {
-                width: 60px;
-                height: 60px;
+                right: 20px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="whatsapp-float">
-        <div class="whatsapp-float-btn" onclick="opensite()">
-            <i class="fab fa-whatsapp whatsapp-float-icon"></i>
-            <div class="whatsapp-float-badge">1</div>
-        </div>
-    </div>
-
-    <header class="header">
-        <div class="english-text">Are You Waiting For Dating?</div>
-        <div class="header-content">
-            <img src="https://example.com/couple-image.jpg" alt="Couple" class="couple-image">
-            <h1><span>TuruLav</span>Kisah Cintamu Dimulai Dari Sini</h1>
-            <p>Di TuruLav, kami percaya setiap orang berhak menemukan seseorang yang spesial. Platform kami menyatukan para lajang dari seluruh Perancis untuk membangun hubungan yang tulus, langgeng, dan nyata. Beri dirimu kesempatan untuk menciptakan kisah indah.</p>
-            <button class="btn" onclick="opensite()">Bergabung dengan TuruLav</button>
+    <header>
+        <div class="container">
+            <div class="logo">SparkCircle</div>
+            <div class="tagline">Cerita Cintamu Dimulai Di Sini</div>
+            <p>Di SparkCircle, kami percaya setiap orang berhak bertemu dengan seseorang yang istimewa. Platform kami menyatukan para lajang dari seluruh Indonesia untuk membangun hubungan yang tulus, langgeng, dan nyata. Beri dirimu kesempatan untuk menciptakan kisah yang indah.</p>
+            <button class="btn whatsapp-btn" onclick="opensite()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white">
+                    <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564c.173.087.288.131.332.202.043.72.043.419-.101.824z"/>
+                </svg>
+                Mulai Sekarang
+            </button>
         </div>
     </header>
-
-    <div class="container">
-        <section class="section">
-            <h2 class="section-title">Kenali Para Lajang yang Siap Menulis Kisah Indah</h2>
-            <div class="members-grid">
+    
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Temui Singles Siap Menulis Kisah Indah</h2>
+            <div class="members">
                 <div class="member-card">
                     <img src="https://www.upoaa.online/yn/img/1.jpg" alt="Ayu" class="member-img">
                     <div class="member-info">
-                        <div class="member-name">Ayu</div>
-                        <div class="member-status">Online</div>
-                        <p class="member-bio">Di tengah keramaian dunia, aku percaya ada seseorang yang akan membuat hidupku lebih indah. Mungkinkah itu kamu?</p>
-                        <button class="btn btn-whatsapp" onclick="opensite()">Chat via WhatsApp</button>
+                        <div class="member-name">
+                            Ayu
+                            <span class="online-status">
+                                <span class="online-dot"></span>
+                                Online
+                            </span>
+                        </div>
+                        <p class="member-quote">"Di lautan manusia ini, aku percaya ada seseorang yang akan membuat duniaku lebih indah. Mungkinkah itu kamu?"</p>
                     </div>
                 </div>
                 
                 <div class="member-card">
                     <img src="https://www.upoaa.online/yn/img/2.jpg" alt="Putri" class="member-img">
                     <div class="member-info">
-                        <div class="member-name">Putri</div>
-                        <div class="member-status">Online</div>
-                        <p class="member-bio">Suka mencoba hal baru, tapi lebih suka berpetualang dengan orang spesial. Maukah kamu menjadi spesialku?</p>
-                        <button class="btn btn-whatsapp" onclick="opensite()">Chat via WhatsApp</button>
+                        <div class="member-name">
+                            Putri
+                            <span class="online-status">
+                                <span class="online-dot"></span>
+                                Online
+                            </span>
+                        </div>
+                        <p class="member-quote">"Suka mencoba hal baru, lebih suka berpetualang dengan orang yang istimewa. Maukah kamu jadi yang istimewa untukku?"</p>
                     </div>
                 </div>
                 
                 <div class="member-card">
                     <img src="https://www.upoaa.online/yn/img/3.jpg" alt="Dewi" class="member-img">
                     <div class="member-info">
-                        <div class="member-name">Dewi</div>
-                        <div class="member-status">Online</div>
-                        <p class="member-bio">Aku orang sederhana yang suka tertawa, makan, dan tentu saja, berbagi semua itu dengan orang yang tepat.</p>
-                        <button class="btn btn-whatsapp" onclick="opensite()">Chat via WhatsApp</button>
+                        <div class="member-name">
+                            Dewi
+                            <span class="online-status">
+                                <span class="online-dot"></span>
+                                Online
+                            </span>
+                        </div>
+                        <p class="member-quote">"Aku orang yang sederhana, suka tertawa, suka makan, dan tentu saja, lebih suka berbagi semua itu dengan orang yang tepat."</p>
                     </div>
                 </div>
                 
                 <div class="member-card">
                     <img src="https://www.upoaa.online/yn/img/4.jpg" alt="Indah" class="member-img">
                     <div class="member-info">
-                        <div class="member-name">Indah</div>
-                        <div class="member-status">Online</div>
-                        <p class="member-bio">Aku menikmati kebebasan, tapi lebih berharap dalam perjalananku, ada seseorang yang berjalan berdampingan denganku.</p>
-                        <button class="btn btn-whatsapp" onclick="opensite()">Chat via WhatsApp</button>
+                        <div class="member-name">
+                            Indah
+                            <span class="online-status">
+                                <span class="online-dot"></span>
+                                Online
+                            </span>
+                        </div>
+                        <p class="member-quote">"Aku menikmati kebebasan, tapi lebih berharap dalam perjalananku yang bebas, bisa bertemu seseorang yang berjalan berdampingan denganku."</p>
                     </div>
                 </div>
                 
                 <div class="member-card">
                     <img src="https://www.upoaa.online/yn/img/5.jpg" alt="Sari" class="member-img">
                     <div class="member-info">
-                        <div class="member-name">Sari</div>
-                        <div class="member-status">Online</div>
-                        <p class="member-bio">Aku bukan yang paling spesial, tapi aku mau menggunakan keistimewaanku untuk melindungi keunikanmu.</p>
-                        <button class="btn btn-whatsapp" onclick="opensite()">Chat via WhatsApp</button>
+                        <div class="member-name">
+                            Sari
+                            <span class="online-status">
+                                <span class="online-dot"></span>
+                                Online
+                            </span>
+                        </div>
+                        <p class="member-quote">"Aku mungkin bukan orang yang paling istimewa, tapi aku bersedia menggunakan keistimewaanku untuk menjaga keunikanmu."</p>
                     </div>
                 </div>
                 
                 <div class="member-card">
                     <img src="https://www.upoaa.online/yn/img/6.jpg" alt="Lestari" class="member-img">
                     <div class="member-info">
-                        <div class="member-name">Lestari</div>
-                        <div class="member-status">Online</div>
-                        <p class="member-bio">Aku bisa terlihat keren, bisa juga menggemaskan, tapi yang paling ingin adalah menjadi pengecualian di hatimu.</p>
-                        <button class="btn btn-whatsapp" onclick="opensite()">Chat via WhatsApp</button>
+                        <div class="member-name">
+                            Lestari
+                            <span class="online-status">
+                                <span class="online-dot"></span>
+                                Online
+                            </span>
+                        </div>
+                        <p class="member-quote">"Aku bisa sangat keren, bisa juga sangat imut, tapi yang paling ingin aku jadi adalah pengecualian di hatimu."</p>
                     </div>
                 </div>
             </div>
             
-            <p style="text-align: center; margin-top: 30px; font-size: 1.2rem;">Saat ini platform kami telah memiliki <span class="highlight">23.922+ member</span>. Jangan lewatkan jodohmu!</p>
-            <button class="btn btn-center" onclick="opensite()">Lihat Lebih Banyak Profil</button>
-        </section>
-        
-        <section class="section">
+            <div style="text-align: center; margin-top: 40px;">
+                <p style="margin-bottom: 20px;">Saat ini kami memiliki 23.922 anggota di platform. Klik tombol untuk melihat lebih banyak profil. Jangan lewatkan kesempatanmu!</p>
+                <button class="btn whatsapp-btn" onclick="opensite()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white">
+                        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564c.173.087.288.131.332.202.043.72.043.419-.101.824z"/>
+                    </svg>
+                    Lihat Lebih Banyak
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section" style="background-color: white;">
+        <div class="container">
             <h2 class="section-title">Tentang Kami</h2>
-            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 40px; line-height: 1.8;">Temukan seseorang yang spesial, mulai dari sini!<br>
-            Apakah Anda mencari cinta sejati, sahabat, atau hubungan yang istimewa, kami menyediakan platform kencan yang aman, hangat, dan nyata. Di sini, setiap pertemuan penuh kemungkinan, setiap kecocokan datang dengan ketulusan.</p>
-            
-            <div class="stats">
-                <div class="stat-item">
-                    <div class="stat-number">23.922+</div>
-                    <div class="stat-label">Total Member Wanita</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">25</div>
-                    <div class="stat-label">Usia Rata-rata</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">19.821</div>
-                    <div class="stat-label">Sedang Online</div>
-                </div>
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <h3 style="color: var(--primary-color); margin-bottom: 20px;">Temukan TA yang Istimewa, Mulai dari Sini!</h3>
+                <p style="margin-bottom: 30px;">Entah kamu mencari cinta sejati, sahabat, atau jodoh yang ditakdirkan, kami menyediakan platform kencan yang aman, hangat, dan nyata. Di sini, setiap pertemuan penuh kemungkinan, setiap kecocokan datang dari hati.</p>
+                <button class="btn whatsapp-btn" onclick="opensite()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white">
+                        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564c.173.087.288.131.332.202.043.72.043.419-.101.824z"/>
+                    </svg>
+                    Gabung Sekarang
+                </button>
             </div>
             
-            <button class="btn btn-center" onclick="opensite()">Bergabung Sekarang</button>
-        </section>
-        
-        <section class="section">
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">23.922+</div>
+                    <div class="stat-label">Anggota Wanita</div>
+                </div>
+                
+                <div class="stat">
+                    <div class="stat-number">25</div>
+                    <div class="stat-label">Rata-rata Usia</div>
+                </div>
+                
+                <div class="stat">
+                    <div class="stat-number">19.821</div>
+                    <div class="stat-label">Online Sekarang</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="container">
             <h2 class="section-title">Testimoni Pengguna</h2>
-            <p style="text-align: center; margin-bottom: 40px; font-size: 1.2rem;">Saksikan kisah cinta mereka, terima kasih TuruLav</p>
+            <h3 style="text-align: center; margin-bottom: 40px; color: var(--dark-color);">Saksikan kisah cinta indah mereka, berkat SparkCircle</h3>
             
             <div class="testimonials">
                 <div class="testimonial">
-                    <img src="https://www.upoaa.online/yn/img/b1.jpg" alt="Testimoni 1" class="testimonial-img">
-                    <p class="testimonial-text">Aku tak pernah menyangka, satu pesan sederhana bisa mengubah hidupku. Saat mengirim pesan ke Julian, ini hanya sebuah percobaan. Beberapa hari kemudian, perasaan kami berkembang cepat, dan tiga bulan kemudian kami bertemu di Lyon, seolah keajaiban datang. Sekarang, kami menjalani hari bersama. Terima kasih TuruLav atas keajaiban ini.</p>
+                    <img src="https://www.upoaa.online/yn/img/b1.jpg" alt="Testimonial 1">
+                    <p>"Aku tak pernah menyangka pesan sederhana bisa mengubah hidupku. Mengirim pesan pada Julian hanya sekedar mencoba. Beberapa hari kemudian, perasaan kami berkembang pesat, dan tiga bulan kemudian bertemu di Lyon, seperti keajaiban. Kini, kami hidup bersama setiap hari. Terima kasih SparkCircle atas keajaiban ini."</p>
                 </div>
                 
                 <div class="testimonial">
-                    <img src="https://www.upoaa.online/yn/img/b2.jpg" alt="Testimoni 2" class="testimonial-img">
-                    <p class="testimonial-text">Berkat TuruLav, kami melampaui jarak ribuan kilometer, dari dunia maya ke nyata. Sekarang, jarak dua kota hanya menambah kebahagiaan kami.</p>
+                    <img src="https://www.upoaa.online/yn/img/b2.jpg" alt="Testimonial 2">
+                    <p>"Berkat SparkCircle, kami melewati ribuan kilometer, dari virtual menjadi nyata. Sekarang, jarak dua kota hanya menambah kebahagiaan kami."</p>
                 </div>
                 
                 <div class="testimonial">
-                    <img src="https://www.upoaa.online/yn/img/b3.jpg" alt="Testimoni 3" class="testimonial-img">
-                    <p class="testimonial-text">Aplikasi kencan dangkal sebelumnya telah mengecewakanku berkali-kali, sampai aku menemukan TuruLav. Di sini, aku bertemu Lucas, pasangan yang tulus dan perhatian. Kami memiliki nilai-nilai yang sama, dan hidup menjadi lebih indah.</p>
+                    <img src="https://www.upoaa.online/yn/img/b3.jpg" alt="Testimonial 3">
+                    <p>"Banyak aplikasi kencan dangkal membuatku kecewa, hingga aku menemukan SparkCircle. Di sini, aku bertemu Lucas, pasangan yang tulus dan perhatian. Kami berbagi nilai yang sama, hidup jadi lebih indah karenanya."</p>
                 </div>
             </div>
-        </section>
-        
-        <section class="section">
-            <h2 class="section-title">Mulai Perjalanan Cintamu</h2>
-            <p style="text-align: center; margin-bottom: 40px; font-size: 1.2rem;">Bergabung dengan TuruLav mudah dan cepat</p>
+        </div>
+    </section>
+    
+    <section class="section" style="background-color: white;">
+        <div class="container">
+            <h2 class="section-title">Cara Bergabung</h2>
+            <h3 style="text-align: center; margin-bottom: 40px; color: var(--dark-color);">Mulai perjalanan cintamu, bergabung dengan SparkCircle mudah dan cepat</h3>
             
             <div class="steps">
                 <div class="step">
                     <div class="step-number">1</div>
-                    <h3 class="step-title">Tambahkan kami di WhatsApp</h3>
-                    <p class="step-desc">Klik tombol WhatsApp di bawah untuk memulai percakapan dengan tim kami</p>
+                    <h3>Tambahkan kami di WhatsApp</h3>
+                    <p>Klik tombol WhatsApp di halaman ini untuk memulai percakapan</p>
                 </div>
                 
                 <div class="step">
                     <div class="step-number">2</div>
-                    <h3 class="step-title">Kirim profil Anda</h3>
-                    <p class="step-desc">Isi nama, usia, kota, minat, dan tipe pasangan idealmu... Cepat dan rahasia!</p>
+                    <h3>Kirim Profil Anda</h3>
+                    <p>Isi nama, usia, kota, hobi, dan tipe pasangan ideal Anda... cepat dan rahasia!</p>
                 </div>
                 
                 <div class="step">
                     <div class="step-number">3</div>
-                    <h3 class="step-title">Dapatkan saran pasangan pertama</h3>
-                    <p class="step-desc">Tim kami akan memilihkan seseorang yang sangat cocok dengan Anda. Langkah selanjutnya terserah Anda!</p>
+                    <h3>Dapatkan Kecocokan Pertama</h3>
+                    <p>Tim kami akan memilihkan pasangan yang sangat cocok dan tulus untuk Anda. Langkah selanjutnya, Anda yang menentukan!</p>
                 </div>
             </div>
             
-            <button class="btn btn-center btn-whatsapp" onclick="opensite()">Mulai Sekarang via WhatsApp</button>
-        </section>
+            <div style="text-align: center; margin-top: 50px;">
+                <button class="btn whatsapp-btn" onclick="opensite()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white">
+                        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564c.173.087.288.131.332.202.043.72.043.419-.101.824z"/>
+                    </svg>
+                    Mulai Sekarang
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <div class="whatsapp-float">
+        <a href="#" class="whatsapp-icon" onclick="opensite(); return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="white">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564c.173.087.288.131.332.202.043.72.043.419-.101.824z"/>
+            </svg>
+            <span class="notification">1</span>
+        </a>
     </div>
     
-    <footer class="footer">
-        <p class="disclaimer">
-            TuruLav adalah platform kencan online yang berkomitmen untuk menciptakan lingkungan yang aman dan nyaman bagi semua pengguna. Kami tidak mentolerir konten atau perilaku yang tidak pantas. Semua profil diverifikasi untuk memastikan keaslian. Layanan ini ditujukan untuk orang dewasa berusia 18 tahun ke atas. Dengan menggunakan layanan ini, Anda menyetujui Syarat dan Ketentuan serta Kebijakan Privasi kami. Iklan ini mematuhi semua kebijakan platform iklan termasuk Facebook dan TikTok.
-        </p>
+    <footer>
+        <div class="container">
+            <div class="logo" style="margin-bottom: 20px;">SparkCircle</div>
+            <p>Cerita Cintamu Dimulai Di Sini</p>
+            
+            <div class="disclaimer">
+                <h3 style="margin-bottom: 10px;">Pemberitahuan Kebijakan</h3>
+                <p>SparkCircle mematuhi kebijakan iklan Facebook dan TikTok. Kami tidak menjual produk terlarang atau berbahaya, tidak menggunakan konten dewasa yang tidak sesuai, dan tidak menggunakan bahasa yang mengandung diskriminasi. Semua konten kami ramah, positif, dan mempromosikan hubungan yang sehat dan saling menghormati. Platform ini untuk pengguna berusia 18+ tahun. Kami menghormati privasi Anda dan tidak membagikan informasi pribadi tanpa izin.</p>
+                <p style="margin-top: 10px;">© 2023 SparkCircle. Hak Cipta Dilindungi.</p>
+            </div>
+        </div>
     </footer>
-
+    
     <script>
         function opensite() {
-            window.location.href = "https://line.me/";
+            window.open('https://line.me/ti/p/~username', '_blank');
         }
     </script>
 </body>

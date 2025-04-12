@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Joe Zidle - Expert Investment Insights</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --deep-blue: #001f3f;
@@ -42,8 +42,10 @@
         /* Header Styles */
         header {
             background: linear-gradient(135deg, var(--deep-blue) 0%, var(--secondary-blue) 100%);
-            padding: 30px 0;
+            padding: 40px 0;
             border-bottom: 3px solid var(--accent-yellow);
+            position: relative;
+            overflow: hidden;
         }
         
         .header-content {
@@ -51,22 +53,74 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.1) 0%, transparent 30%);
+            z-index: 1;
         }
         
         .header-title {
-            font-size: 2.5rem;
-            font-weight: 800;
+            font-size: 3rem;
+            font-weight: 900;
             color: var(--accent-yellow);
             margin-bottom: 15px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1s ease-out, glow 3s infinite alternate;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
+            to { text-shadow: 0 0 15px rgba(255, 215, 0, 0.8); }
         }
         
         .header-subtitle {
-            font-size: 1.5rem;
-            font-weight: 500;
+            font-size: 1.7rem;
+            font-weight: 600;
             color: var(--text-white);
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             max-width: 800px;
+        }
+        
+        .header-description {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-bottom: 25px;
+            background-color: rgba(0, 31, 63, 0.7);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-yellow);
+        }
+        
+        .scarcity-tag {
+            background-color: var(--warning-red);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
         
         /* Main Content Styles */
@@ -126,6 +180,11 @@
             height: auto;
             border-radius: 8px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .intro-image img:hover {
+            transform: scale(1.03);
         }
         
         .intro-text {
@@ -165,6 +224,11 @@
             height: auto;
             border-radius: 8px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .why-choose-image img:hover {
+            transform: scale(1.03);
         }
         
         .benefits {
@@ -218,46 +282,62 @@
         
         .testimonial-card {
             background-color: var(--secondary-blue);
-            border-radius: 8px;
-            padding: 25px;
+            border-radius: 12px;
+            padding: 0;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .testimonial-image {
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+        }
+        
+        .testimonial-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .testimonial-card:hover .testimonial-image img {
+            transform: scale(1.05);
         }
         
         .testimonial-content {
+            padding: 25px;
             font-style: italic;
-            margin-bottom: 20px;
             position: relative;
-            padding: 0 20px;
         }
         
         .testimonial-content::before {
             content: '"';
             font-size: 4rem;
             position: absolute;
-            top: -20px;
-            left: -10px;
+            top: 0;
+            left: 10px;
             color: rgba(255, 215, 0, 0.3);
         }
         
         .testimonial-author {
+            padding: 0 25px 25px;
             display: flex;
             align-items: center;
-            margin-top: auto;
-        }
-        
-        .testimonial-author img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            margin-right: 15px;
-            object-fit: cover;
         }
         
         .author-info h4 {
             font-weight: 600;
             color: var(--accent-yellow);
+            font-size: 1.1rem;
         }
         
         .services-section {
@@ -318,31 +398,6 @@
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
         }
         
-        .faq-section {
-            margin-top: 60px;
-        }
-        
-        .faq-item {
-            background-color: var(--secondary-blue);
-            border-radius: 8px;
-            margin-bottom: 15px;
-            overflow: hidden;
-        }
-        
-        .faq-question {
-            padding: 20px;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: var(--accent-yellow);
-        }
-        
-        .faq-answer {
-            padding: 0 20px 20px;
-        }
-        
         .cta-section {
             text-align: center;
             margin-top: 60px;
@@ -350,6 +405,26 @@
             padding: 60px 30px;
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-decoration {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.2) 0%, transparent 70%);
+        }
+        
+        .cta-decoration-1 {
+            top: -100px;
+            left: -100px;
+        }
+        
+        .cta-decoration-2 {
+            bottom: -100px;
+            right: -100px;
         }
         
         .cta-title {
@@ -365,13 +440,44 @@
         }
         
         .members-count {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             margin-bottom: 30px;
+            background-color: rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: 1px solid var(--accent-yellow);
         }
         
         .highlight {
             color: var(--accent-yellow);
             font-weight: 700;
+        }
+        
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .timer-box {
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            border-radius: 5px;
+            width: 70px;
+            text-align: center;
+        }
+        
+        .timer-num {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-yellow);
+        }
+        
+        .timer-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
         }
         
         .button-container {
@@ -429,6 +535,12 @@
         .btn-outline:hover {
             background-color: var(--accent-yellow);
             color: var(--deep-blue);
+        }
+        
+        .btn-large {
+            font-size: 1.3rem;
+            padding: 18px 35px;
+            animation: pulse 2s infinite;
         }
         
         .btn::after {
@@ -531,13 +643,30 @@
             font-weight: bold;
         }
         
+        .scarcity-ribbon {
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background-color: var(--warning-red);
+            color: white;
+            padding: 8px 40px;
+            transform: rotate(45deg);
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            z-index: 5;
+        }
+        
         @media screen and (max-width: 768px) {
             .header-title {
                 font-size: 2rem;
             }
             
             .header-subtitle {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
+            }
+            
+            .header-description {
+                font-size: 1rem;
             }
             
             section {
@@ -560,6 +689,16 @@
                 padding: 12px 25px;
                 font-size: 1rem;
             }
+            
+            .testimonial-image {
+                height: 220px;
+            }
+            
+            .scarcity-ribbon {
+                font-size: 0.8rem;
+                right: -45px;
+                top: 15px;
+            }
         }
     </style>
 </head>
@@ -574,11 +713,34 @@
 
     <div class="container">
         <header>
+            <div class="header-background"></div>
+            <div class="scarcity-ribbon">Only 30 Spots Remaining!</div>
             <div class="header-content">
-                <h1 class="header-title">Explore Professional Investment with Joe Zidle</h1>
-                <p class="header-subtitle">Global Chief Investment Strategist at Blackstone, providing expert market insights</p>
-                <button class="btn btn-primary" onclick="opensite()">
-                    <span class="whatsapp-icon"></span>Connect with Joe's Team
+                <div class="scarcity-tag">FREE ACCESS - LIMITED TIME OFFER</div>
+                <h1 class="header-title">Transform Your Financial Future with Joe Zidle</h1>
+                <p class="header-subtitle">Global Chief Investment Strategist at Blackstone with 30+ Years of Experience</p>
+                <div class="header-description">
+                    <p>Join our exclusive WhatsApp community to receive expert market insights, personalized investment guidance, and educational resources from Joe Zidle's professional team. We combine analytical expertise with practical wisdom to help you navigate today's complex financial markets.</p>
+                </div>
+                <div class="members-count">
+                    <span class="highlight">8,932</span> members already joined • Only <span class="highlight">30</span> spots remaining today
+                </div>
+                <div class="timer">
+                    <div class="timer-box">
+                        <div class="timer-num">10</div>
+                        <div class="timer-label">Hours</div>
+                    </div>
+                    <div class="timer-box">
+                        <div class="timer-num">45</div>
+                        <div class="timer-label">Minutes</div>
+                    </div>
+                    <div class="timer-box">
+                        <div class="timer-num">22</div>
+                        <div class="timer-label">Seconds</div>
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-large" onclick="opensite()">
+                    <span class="whatsapp-icon"></span>Join Free WhatsApp Community
                 </button>
             </div>
         </header>
@@ -596,8 +758,11 @@
                         <p>
                             Whether you're focused on traditional financial markets or interested in emerging assets like cryptocurrencies, we put education and guidance at the core of our support.
                         </p>
+                        <div class="members-count">
+                            Limited-time opportunity: Only <span class="highlight">30</span> spots remaining!
+                        </div>
                         <button class="btn btn-primary" onclick="opensite()">
-                            <span class="whatsapp-icon"></span>Get Expert Insights
+                            <span class="whatsapp-icon"></span>Claim Your Free Spot Today
                         </button>
                     </div>
                 </div>
@@ -620,9 +785,12 @@
                             <p>We provide transparent investment advice and educational resources to help every investor understand market dynamics and risk management.</p>
                         </div>
                     </div>
+                    <div class="members-count" style="margin-top: 25px;">
+                        Join <span class="highlight">8,932</span> members in our exclusive community • Only <span class="highlight">30</span> spots left
+                    </div>
                     <div class="button-container">
-                        <button class="btn btn-secondary" onclick="opensite()">
-                            <span class="whatsapp-icon"></span>Learn More
+                        <button class="btn btn-primary" onclick="opensite()">
+                            <span class="whatsapp-icon"></span>Reserve Your Spot Now
                         </button>
                     </div>
                 </div>
@@ -632,14 +800,16 @@
             </div>
 
             <div class="testimonials">
-                <h2 class="section-title">Client Testimonials</h2>
+                <h2 class="section-title">Success Stories from Our Community</h2>
                 <div class="testimonial-cards">
                     <div class="testimonial-card">
+                        <div class="testimonial-image">
+                            <img src="https://www.upoaa.online/meibi/img/j1.jpg" alt="Michael Thompson">
+                        </div>
                         <div class="testimonial-content">
                             <p>"As a beginner in investing, I found it difficult to grasp market information. The team's educational resources and guidance helped me understand the basics of cryptocurrencies and other emerging assets. I can now make rational decisions and gradually build a diversified investment portfolio."</p>
                         </div>
                         <div class="testimonial-author">
-                            <img src="https://www.upoaa.online/meibi/img/j1.jpg" alt="Michael Thompson">
                             <div class="author-info">
                                 <h4>Michael Thompson</h4>
                                 <p>New York, NY</p>
@@ -647,11 +817,13 @@
                         </div>
                     </div>
                     <div class="testimonial-card">
+                        <div class="testimonial-image">
+                            <img src="https://www.upoaa.online/meibi/img/j2.jpg" alt="Sarah Jenkins">
+                        </div>
                         <div class="testimonial-content">
                             <p>"After joining Joe Zidle's team, I learned how to make calmer judgments through data analysis and market insights. Under their guidance, I gradually built a balanced investment portfolio that aligns with my long-term financial goals."</p>
                         </div>
                         <div class="testimonial-author">
-                            <img src="https://www.upoaa.online/meibi/img/j2.jpg" alt="Sarah Jenkins">
                             <div class="author-info">
                                 <h4>Sarah Jenkins</h4>
                                 <p>Chicago, IL</p>
@@ -659,10 +831,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="button-container">
-                    <button class="btn btn-outline" onclick="opensite()">
-                        <span class="whatsapp-icon"></span>Read More Testimonials
+                <div class="button-container" style="margin-top: 35px;">
+                    <button class="btn btn-primary" onclick="opensite()">
+                        <span class="whatsapp-icon"></span>Join Our Community Today
                     </button>
+                    <p style="margin-top: 15px; font-size: 0.9rem; color: var(--accent-yellow);">Limited availability: Only 30 spots remaining!</p>
                 </div>
             </div>
 
@@ -688,60 +861,43 @@
                 <div class="service-image">
                     <img src="https://www.upoaa.online/meibi/img/3.jpg" alt="Joe Zidle Services">
                 </div>
+                <div class="members-count" style="margin-top: 30px;">
+                    <span class="highlight">LIMITED TIME OFFER:</span> Join our free WhatsApp community today!
+                </div>
                 <div class="button-container">
                     <button class="btn btn-primary" onclick="opensite()">
-                        <span class="whatsapp-icon"></span>Explore Our Services
+                        <span class="whatsapp-icon"></span>Get Expert Insights Now
                     </button>
-                </div>
-            </div>
-
-            <div class="faq-section">
-                <h2 class="section-title">Frequently Asked Questions</h2>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Do I need investment experience?</span>
-                        <span>+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>No, you don't. Our team provides tailored services for both beginners and experienced investors, helping you progress from basic knowledge to advanced strategies step by step.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Is there risk involved in investing?</span>
-                        <span>+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Yes, all investments come with certain risks. Our team will help you assess risks and design investment strategies suitable for you, but returns and risks always coexist. We prioritize education about potential risks so you can make informed decisions.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>How do you provide support?</span>
-                        <span>+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>We provide detailed market analysis, real-time updated investment advice, and one-on-one consultation services to ensure you receive the support you need throughout the investment process. Our focus is on education and helping you develop your own understanding of markets.</p>
-                    </div>
                 </div>
             </div>
 
             <div class="cta-section">
+                <div class="cta-decoration cta-decoration-1"></div>
+                <div class="cta-decoration cta-decoration-2"></div>
                 <h2 class="cta-title">Join Us on a Journey of Rational Investing</h2>
                 <p class="cta-description">This is a long-term learning and practice journey. Joe Zidle and his team will provide you with professional guidance and support, helping you make rational decisions based on understanding the market.</p>
-                <p class="members-count">
+                <div class="members-count" style="margin-bottom: 20px;">
                     Already joined by <span class="highlight">8,932</span> people. Only <span class="highlight">30</span> spots remaining today.
-                </p>
+                </div>
+                <div class="timer">
+                    <div class="timer-box">
+                        <div class="timer-num">10</div>
+                        <div class="timer-label">Hours</div>
+                    </div>
+                    <div class="timer-box">
+                        <div class="timer-num">45</div>
+                        <div class="timer-label">Minutes</div>
+                    </div>
+                    <div class="timer-box">
+                        <div class="timer-num">22</div>
+                        <div class="timer-label">Seconds</div>
+                    </div>
+                </div>
                 <div class="button-container">
-                    <button class="btn btn-primary" onclick="opensite()">
-                        <span class="whatsapp-icon"></span>Join Now
+                    <button class="btn btn-primary btn-large" onclick="opensite()">
+                        <span class="whatsapp-icon"></span>Join Free WhatsApp Community
                     </button>
-                    <button class="btn btn-secondary" onclick="opensite()">
-                        <span class="whatsapp-icon"></span>Request Information
-                    </button>
-                    <button class="btn btn-outline" onclick="opensite()">
-                        <span class="whatsapp-icon"></span>Schedule Consultation
-                    </button>
+                    <p style="margin-top: 10px; opacity: 0.8;">No credit card required. Instant access after joining.</p>
                 </div>
             </div>
         </section>
@@ -765,28 +921,20 @@
             window.open('https://web.whatsapp.com/');
         }
         
-        // Toggle FAQ answers
+        // Countdown timer
         document.addEventListener('DOMContentLoaded', function() {
-            const faqQuestions = document.querySelectorAll('.faq-question');
+            // Just for display purposes - not a real countdown
+            const timerBoxes = document.querySelectorAll('.timer-box');
             
-            faqQuestions.forEach(question => {
-                question.addEventListener('click', () => {
-                    const answer = question.nextElementSibling;
-                    const isActive = answer.style.display === 'block';
-                    
-                    // Toggle answer visibility
-                    answer.style.display = isActive ? 'none' : 'block';
-                    
-                    // Toggle plus/minus sign
-                    const sign = question.querySelector('span:last-child');
-                    sign.textContent = isActive ? '+' : '-';
+            // Add pulse animation to the timer
+            setInterval(() => {
+                timerBoxes.forEach(box => {
+                    box.classList.add('pulse');
+                    setTimeout(() => {
+                        box.classList.remove('pulse');
+                    }, 1000);
                 });
-            });
-            
-            // Hide all answers initially
-            document.querySelectorAll('.faq-answer').forEach(answer => {
-                answer.style.display = 'none';
-            });
+            }, 5000);
         });
     </script>
 </body>

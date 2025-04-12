@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SparkCircle - Temukan Cinta Sejatimu</title>
+    <title>TuruLav - Temukan Cinta Sejatimu</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -14,31 +14,81 @@
         }
         
         body {
-            background-color: #f9f3fb;
-            color: #333;
+            background-color: #2a0a35;
+            color: #fff;
             overflow-x: hidden;
         }
         
         .header {
-            background-color: #b241c3;
-            color: white;
-            text-align: center;
-            padding: 30px 20px;
+            background: linear-gradient(135deg, #5c2d91 0%, #2a0a35 100%);
+            padding: 60px 20px;
             position: relative;
             overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .header:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="rgba(255,255,255,0.05)" d="M30,50 Q50,30 70,50 Q50,70 30,50"/></svg>');
+            background-size: 100px;
+            opacity: 0.3;
+        }
+        
+        .couple-image {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
         }
         
         .header h1 {
-            font-size: 2.5rem;
+            font-size: 3.5rem;
             margin-bottom: 15px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            line-height: 1.2;
+        }
+        
+        .header h1 span {
+            display: block;
+            font-size: 2rem;
+            color: #ffcc00;
+            margin-bottom: 10px;
         }
         
         .header p {
-            font-size: 1.1rem;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.6;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .english-text {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: rgba(255,255,255,0.8);
+            text-transform: uppercase;
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
         }
         
         .container {
@@ -48,19 +98,18 @@
         }
         
         .section {
-            background-color: white;
+            background-color: rgba(92, 45, 145, 0.3);
             border-radius: 15px;
-            padding: 30px;
+            padding: 40px;
             margin-bottom: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            position: relative;
-            overflow: hidden;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.1);
         }
         
         .section-title {
-            color: #b241c3;
-            margin-bottom: 20px;
-            font-size: 1.8rem;
+            color: #ffcc00;
+            margin-bottom: 30px;
+            font-size: 2.2rem;
             text-align: center;
             position: relative;
         }
@@ -70,146 +119,150 @@
             display: block;
             width: 80px;
             height: 3px;
-            background-color: #ffcc00;
-            margin: 10px auto;
+            background-color: #ff5722;
+            margin: 15px auto;
         }
         
         .members-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
+            gap: 25px;
+            margin-top: 40px;
         }
         
         .member-card {
-            background-color: white;
-            border-radius: 10px;
+            background-color: rgba(42, 10, 53, 0.7);
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
             transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
         }
         
         .member-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(178, 65, 195, 0.2);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(178, 65, 195, 0.4);
         }
         
         .member-img {
             width: 100%;
-            height: 250px;
+            height: 300px;
             object-fit: cover;
         }
         
         .member-info {
-            padding: 15px;
+            padding: 20px;
         }
         
         .member-name {
             font-weight: bold;
-            font-size: 1.2rem;
-            color: #b241c3;
-            margin-bottom: 5px;
+            font-size: 1.3rem;
+            color: #ffcc00;
+            margin-bottom: 8px;
         }
         
         .member-status {
             display: inline-block;
             background-color: #4caf50;
             color: white;
-            font-size: 0.8rem;
-            padding: 3px 8px;
-            border-radius: 10px;
-            margin-bottom: 10px;
+            font-size: 0.9rem;
+            padding: 4px 12px;
+            border-radius: 15px;
+            margin-bottom: 15px;
         }
         
         .member-bio {
-            font-size: 0.9rem;
-            color: #666;
-            line-height: 1.5;
-            margin-bottom: 15px;
+            font-size: 1rem;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.6;
+            margin-bottom: 20px;
         }
         
         .btn {
             display: inline-block;
             background-color: #ff5722;
             color: white;
-            padding: 12px 25px;
-            border-radius: 30px;
+            padding: 15px 35px;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
             text-align: center;
             transition: all 0.3s;
             border: none;
             cursor: pointer;
-            font-size: 1rem;
-            box-shadow: 0 4px 8px rgba(255, 87, 34, 0.3);
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(255, 87, 34, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
         .btn:hover {
             background-color: #e64a19;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(255, 87, 34, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 87, 34, 0.6);
         }
         
         .btn-whatsapp {
             background-color: #25D366;
-            box-shadow: 0 4px 8px rgba(37, 211, 102, 0.3);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
         }
         
         .btn-whatsapp:hover {
             background-color: #128C7E;
-            box-shadow: 0 6px 12px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.6);
         }
         
         .btn-center {
             display: block;
-            margin: 30px auto;
-            max-width: 250px;
+            margin: 40px auto;
+            max-width: 300px;
         }
         
         .stats {
             display: flex;
             justify-content: space-around;
             flex-wrap: wrap;
-            margin: 30px 0;
+            margin: 40px 0;
         }
         
         .stat-item {
             text-align: center;
-            padding: 15px;
+            padding: 20px;
             flex: 1;
-            min-width: 150px;
+            min-width: 200px;
         }
         
         .stat-number {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: bold;
-            color: #b241c3;
-            margin-bottom: 5px;
+            color: #ffcc00;
+            margin-bottom: 10px;
         }
         
         .stat-label {
-            color: #666;
-            font-size: 1rem;
+            color: rgba(255,255,255,0.8);
+            font-size: 1.1rem;
         }
         
         .testimonials {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 30px;
-            margin-top: 30px;
+            margin-top: 40px;
         }
         
         .testimonial {
-            background-color: #f9f3fb;
-            padding: 25px;
-            border-radius: 10px;
+            background-color: rgba(42, 10, 53, 0.7);
+            padding: 30px;
+            border-radius: 15px;
             position: relative;
+            border: 1px solid rgba(255,255,255,0.1);
         }
         
         .testimonial:before {
             content: '"';
-            font-size: 5rem;
-            color: rgba(178, 65, 195, 0.1);
+            font-size: 6rem;
+            color: rgba(255, 204, 0, 0.1);
             position: absolute;
             top: 10px;
             left: 10px;
@@ -217,21 +270,21 @@
         }
         
         .testimonial-img {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             object-fit: cover;
             float: right;
-            margin-left: 15px;
-            margin-bottom: 15px;
-            border: 3px solid #b241c3;
+            margin-left: 20px;
+            margin-bottom: 20px;
+            border: 3px solid #ffcc00;
         }
         
         .testimonial-text {
             font-style: italic;
-            color: #555;
-            line-height: 1.6;
-            margin-bottom: 15px;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.8;
+            margin-bottom: 20px;
             position: relative;
             z-index: 1;
         }
@@ -240,54 +293,55 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
-            margin-top: 30px;
+            margin-top: 40px;
         }
         
         .step {
             flex: 0 0 calc(33.333% - 20px);
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             position: relative;
         }
         
         .step-number {
             display: inline-block;
-            width: 50px;
-            height: 50px;
-            background-color: #b241c3;
+            width: 60px;
+            height: 60px;
+            background-color: #ff5722;
             color: white;
             border-radius: 50%;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: bold;
-            line-height: 50px;
-            margin-bottom: 15px;
+            line-height: 60px;
+            margin-bottom: 20px;
         }
         
         .step-title {
             font-weight: bold;
-            color: #b241c3;
-            margin-bottom: 10px;
-            font-size: 1.2rem;
+            color: #ffcc00;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
         }
         
         .step-desc {
-            color: #666;
-            line-height: 1.5;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.8;
         }
         
         .footer {
-            background-color: #333;
+            background-color: #1a0521;
             color: white;
-            padding: 30px 20px;
+            padding: 40px 20px;
             text-align: center;
+            margin-top: 60px;
         }
         
         .disclaimer {
-            font-size: 0.8rem;
-            color: #aaa;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
             max-width: 800px;
             margin: 0 auto;
-            line-height: 1.5;
+            line-height: 1.8;
         }
         
         .whatsapp-float {
@@ -302,24 +356,25 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             background-color: #25D366;
             color: white;
             border-radius: 50%;
             text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
             position: relative;
             transition: all 0.3s;
+            animation: pulse 2s infinite;
         }
         
         .whatsapp-float-btn:hover {
             background-color: #128C7E;
-            transform: scale(1.1);
+            transform: scale(1.1) translateY(-5px);
         }
         
         .whatsapp-float-icon {
-            font-size: 30px;
+            font-size: 35px;
         }
         
         .whatsapp-float-badge {
@@ -328,10 +383,10 @@
             right: -5px;
             background-color: #ff5722;
             color: white;
-            width: 25px;
-            height: 25px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
-            font-size: 12px;
+            font-size: 14px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -346,13 +401,24 @@
         }
         
         .highlight {
-            color: #ff5722;
+            color: #ffcc00;
             font-weight: bold;
         }
         
         @media (max-width: 768px) {
             .header h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
+            }
+            
+            .header h1 span {
+                font-size: 1.5rem;
+            }
+            
+            .english-text {
+                position: static;
+                writing-mode: horizontal-tb;
+                transform: none;
+                margin-bottom: 20px;
             }
             
             .members-grid {
@@ -361,10 +427,16 @@
             
             .step {
                 flex: 0 0 100%;
+                margin-bottom: 30px;
             }
             
             .whatsapp-float {
                 right: 15px;
+            }
+            
+            .whatsapp-float-btn {
+                width: 60px;
+                height: 60px;
             }
         }
     </style>
@@ -378,8 +450,13 @@
     </div>
 
     <header class="header">
-        <h1>SparkCircle – Kisah Cintamu Dimulai Dari Sini</h1>
-        <p>Di SparkCircle, kami percaya setiap orang berhak menemukan seseorang yang spesial. Platform kami menyatukan para lajang dari seluruh Indonesia untuk membangun hubungan yang tulus, langgeng, dan nyata. Beri dirimu kesempatan untuk menciptakan kisah indah.</p>
+        <div class="english-text">Are You Waiting For Dating?</div>
+        <div class="header-content">
+            <img src="https://example.com/couple-image.jpg" alt="Couple" class="couple-image">
+            <h1><span>TuruLav</span>Kisah Cintamu Dimulai Dari Sini</h1>
+            <p>Di TuruLav, kami percaya setiap orang berhak menemukan seseorang yang spesial. Platform kami menyatukan para lajang dari seluruh Perancis untuk membangun hubungan yang tulus, langgeng, dan nyata. Beri dirimu kesempatan untuk menciptakan kisah indah.</p>
+            <button class="btn" onclick="opensite()">Bergabung dengan TuruLav</button>
+        </div>
     </header>
 
     <div class="container">
@@ -447,13 +524,13 @@
                 </div>
             </div>
             
-            <p style="text-align: center; margin-top: 20px; font-size: 1.1rem;">Saat ini platform kami telah memiliki <span class="highlight">23.922+ member</span>. Jangan lewatkan jodohmu!</p>
+            <p style="text-align: center; margin-top: 30px; font-size: 1.2rem;">Saat ini platform kami telah memiliki <span class="highlight">23.922+ member</span>. Jangan lewatkan jodohmu!</p>
             <button class="btn btn-center" onclick="opensite()">Lihat Lebih Banyak Profil</button>
         </section>
         
         <section class="section">
             <h2 class="section-title">Tentang Kami</h2>
-            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 30px; line-height: 1.6;">Temukan seseorang yang spesial, mulai dari sini!<br>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 40px; line-height: 1.8;">Temukan seseorang yang spesial, mulai dari sini!<br>
             Apakah Anda mencari cinta sejati, sahabat, atau hubungan yang istimewa, kami menyediakan platform kencan yang aman, hangat, dan nyata. Di sini, setiap pertemuan penuh kemungkinan, setiap kecocokan datang dengan ketulusan.</p>
             
             <div class="stats">
@@ -476,29 +553,29 @@
         
         <section class="section">
             <h2 class="section-title">Testimoni Pengguna</h2>
-            <p style="text-align: center; margin-bottom: 30px;">Saksikan kisah cinta mereka, terima kasih SparkCircle</p>
+            <p style="text-align: center; margin-bottom: 40px; font-size: 1.2rem;">Saksikan kisah cinta mereka, terima kasih TuruLav</p>
             
             <div class="testimonials">
                 <div class="testimonial">
                     <img src="https://www.upoaa.online/yn/img/b1.jpg" alt="Testimoni 1" class="testimonial-img">
-                    <p class="testimonial-text">Aku tak pernah menyangka, satu pesan sederhana bisa mengubah hidupku. Saat mengirim pesan ke Julian, ini hanya sebuah percobaan. Beberapa hari kemudian, perasaan kami berkembang cepat, dan tiga bulan kemudian kami bertemu di Lyon, seolah keajaiban datang. Sekarang, kami menjalani hari bersama. Terima kasih SparkCircle atas keajaiban ini.</p>
+                    <p class="testimonial-text">Aku tak pernah menyangka, satu pesan sederhana bisa mengubah hidupku. Saat mengirim pesan ke Julian, ini hanya sebuah percobaan. Beberapa hari kemudian, perasaan kami berkembang cepat, dan tiga bulan kemudian kami bertemu di Lyon, seolah keajaiban datang. Sekarang, kami menjalani hari bersama. Terima kasih TuruLav atas keajaiban ini.</p>
                 </div>
                 
                 <div class="testimonial">
                     <img src="https://www.upoaa.online/yn/img/b2.jpg" alt="Testimoni 2" class="testimonial-img">
-                    <p class="testimonial-text">Berkat SparkCircle, kami melampaui jarak ribuan kilometer, dari dunia maya ke nyata. Sekarang, jarak dua kota hanya menambah kebahagiaan kami.</p>
+                    <p class="testimonial-text">Berkat TuruLav, kami melampaui jarak ribuan kilometer, dari dunia maya ke nyata. Sekarang, jarak dua kota hanya menambah kebahagiaan kami.</p>
                 </div>
                 
                 <div class="testimonial">
                     <img src="https://www.upoaa.online/yn/img/b3.jpg" alt="Testimoni 3" class="testimonial-img">
-                    <p class="testimonial-text">Aplikasi kencan dangkal sebelumnya telah mengecewakanku berkali-kali, sampai aku menemukan SparkCircle. Di sini, aku bertemu Lucas, pasangan yang tulus dan perhatian. Kami memiliki nilai-nilai yang sama, dan hidup menjadi lebih indah.</p>
+                    <p class="testimonial-text">Aplikasi kencan dangkal sebelumnya telah mengecewakanku berkali-kali, sampai aku menemukan TuruLav. Di sini, aku bertemu Lucas, pasangan yang tulus dan perhatian. Kami memiliki nilai-nilai yang sama, dan hidup menjadi lebih indah.</p>
                 </div>
             </div>
         </section>
         
         <section class="section">
             <h2 class="section-title">Mulai Perjalanan Cintamu</h2>
-            <p style="text-align: center; margin-bottom: 30px; font-size: 1.1rem;">Bergabung dengan SparkCircle mudah dan cepat</p>
+            <p style="text-align: center; margin-bottom: 40px; font-size: 1.2rem;">Bergabung dengan TuruLav mudah dan cepat</p>
             
             <div class="steps">
                 <div class="step">
@@ -526,7 +603,7 @@
     
     <footer class="footer">
         <p class="disclaimer">
-            SparkCircle adalah platform kencan online yang berkomitmen untuk menciptakan lingkungan yang aman dan nyaman bagi semua pengguna. Kami tidak mentolerir konten atau perilaku yang tidak pantas. Semua profil diverifikasi untuk memastikan keaslian. Layanan ini ditujukan untuk orang dewasa berusia 18 tahun ke atas. Dengan menggunakan layanan ini, Anda menyetujui Syarat dan Ketentuan serta Kebijakan Privasi kami. Iklan ini mematuhi semua kebijakan platform iklan termasuk Facebook dan TikTok.
+            TuruLav adalah platform kencan online yang berkomitmen untuk menciptakan lingkungan yang aman dan nyaman bagi semua pengguna. Kami tidak mentolerir konten atau perilaku yang tidak pantas. Semua profil diverifikasi untuk memastikan keaslian. Layanan ini ditujukan untuk orang dewasa berusia 18 tahun ke atas. Dengan menggunakan layanan ini, Anda menyetujui Syarat dan Ketentuan serta Kebijakan Privasi kami. Iklan ini mematuhi semua kebijakan platform iklan termasuk Facebook dan TikTok.
         </p>
     </footer>
 

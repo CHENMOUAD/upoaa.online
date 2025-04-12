@@ -267,10 +267,12 @@
         
         /* Hero Section */
         .hero {
-            padding: 180px 0 120px;
+            padding: 150px 0 100px;
             position: relative;
             overflow: hidden;
             min-height: 100vh;
+            background: url('https://www.upoaa.online/yn/img/bg.png') no-repeat center center;
+            background-size: cover;
             display: flex;
             align-items: center;
         }
@@ -282,20 +284,16 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
-            pointer-events: none;
-        }
-        
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
+            background: rgba(58, 28, 113, 0.7);
+            z-index: 0;
         }
         
         .hero-content {
             position: relative;
             z-index: 2;
+            max-width: 650px;
+            margin: 0 auto;
+            text-align: center;
         }
         
         .hero-card {
@@ -348,8 +346,11 @@
             opacity: 0.95;
         }
         
-        .hero-image {
-            position: relative;
+        .couple-image {
+            position: absolute;
+            bottom: 0;
+            right: 5%;
+            height: 85%;
             z-index: 1;
             animation: float 6s ease-in-out infinite;
         }
@@ -364,13 +365,6 @@
             100% {
                 transform: translateY(0px);
             }
-        }
-        
-        .hero-image img {
-            width: 100%;
-            height: auto;
-            border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
         }
         
         .floating-hearts {
@@ -414,34 +408,6 @@
                 transform: translate(20px, -100px) scale(0.5);
                 opacity: 0;
             }
-        }
-        
-        /* Conversation Bubble */
-        .chat-bubble {
-            position: absolute;
-            top: 20%;
-            right: 5%;
-            background-color: white;
-            color: var(--primary-purple);
-            padding: 15px 20px;
-            border-radius: 25px;
-            max-width: 200px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            animation: fadeInRight 1s, float 5s ease-in-out infinite;
-            font-weight: 500;
-        }
-        
-        .chat-bubble::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 20px;
-            height: 20px;
-            background: white;
-            border-radius: 50%;
-            box-shadow: 30px 0 white, 15px 15px white;
-            transform: translate(-50%, 50%);
         }
         
         /* Members Section */
@@ -1133,22 +1099,20 @@
         
         /* Responsive Design */
         @media (max-width: 992px) {
-            .hero-grid, 
+            .hero-content {
+                max-width: 95%;
+            }
+            
             .about-grid,
             .footer-grid {
                 grid-template-columns: 1fr;
-            }
-            
-            .hero-image {
-                order: -1;
-                margin-bottom: 30px;
             }
             
             .about-stats {
                 grid-template-columns: repeat(3, 1fr);
             }
             
-            .chat-bubble {
+            .couple-image {
                 display: none;
             }
         }
@@ -1241,7 +1205,7 @@
         <div class="container">
             <div class="header-container">
                 <div class="logo">
-                    <i class="fas fa-heart"></i> TuruLav
+                    <i class="fas fa-heart"></i> SparkCircle
                 </div>
                 <button class="btn btn-primary" onclick="opensite()">
                     <i class="fas fa-user-plus"></i> 立即加入
@@ -1254,28 +1218,20 @@
     <section class="hero">
         <div class="floating-hearts" id="floating-hearts"></div>
         <div class="container">
-            <div class="hero-grid">
-                <div class="hero-content">
-                    <div class="hero-card">
-                        <h1 class="hero-title">TuruLav — 你的爱情故事从这里开始</h1>
-                        <p class="hero-subtitle">
-                            在TuruLav，我们相信每个人都值得遇到特别的人。我们的平台将来自印尼当地的单身人士聚集在一起，建立真诚、持久、真实的联系。给自己一个机会去创造一个美丽的故事。
-                        </p>
-                        <button class="btn btn-primary btn-animated" onclick="opensite()">
-                            <i class="fas fa-heart"></i> 立即加入TuruLav
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="hero-image">
-                    <img src="https://pfst.cf2.poecdn.net/base/image/1dccd5e24bf7d725a6077d7e959ef1147fcb1fbd1e8cf2f7816a1c37b7e76bef?w=1880&h=701" alt="TuruLav Dating">
+            <div class="hero-content">
+                <div class="hero-card">
+                    <h1 class="hero-title">SparkCircle -- 你的爱情故事从这里开始</h1>
+                    <p class="hero-subtitle">
+                        在SparkCircle，我们相信每个人都值得遇到特别的人。我们的平台将来自印尼当地的单身人士聚集在一起，建立真诚、持久、真实的联系。给自己一个机会去创造一个美丽的故事。
+                    </p>
+                    <button class="btn btn-primary btn-animated" onclick="opensite()">
+                        <i class="fas fa-heart"></i> 立即加入我们
+                    </button>
                 </div>
             </div>
         </div>
         
-        <div class="chat-bubble">
-            Are You Waiting for Dating?
-        </div>
+        <img src="https://pfst.cf2.poecdn.net/base/image/cc9b9ad1b6648662ae9a5ab2ece03851cc5b64adcd4e92a28cdf2f89393ec88d?w=1224&h=816" class="couple-image" alt="Happy Couple">
     </section>
     
     <!-- Members Section -->
@@ -1461,7 +1417,7 @@
             <div class="section-header">
                 <h2 class="section-title">用户见证</h2>
                 <p class="section-subtitle">
-                    见证他们的美好爱情，感谢TuruLav
+                    见证他们的美好爱情，感谢SparkCircle
                 </p>
             </div>
             
@@ -1472,7 +1428,7 @@
                     </div>
                     <div class="testimonial-content">
                         <p class="testimonial-text">
-                            "我从未想过，一条简单的信息会改变我的人生。写信给朱利安时，这只是一次尝试。几天后，我们的感情迅速升温，三个月后在里昂相见，仿佛奇迹降临。如今，我们携手共度每一天。感谢TuruLav带来的奇迹。"
+                            "我从未想过，一条简单的信息会改变我的人生。写信给朱利安时，这只是一次尝试。几天后，我们的感情迅速升温，三个月后在里昂相见，仿佛奇迹降临。如今，我们携手共度每一天。感谢SparkCircle带来的奇迹。"
                         </p>
                         <div class="testimonial-author">
                             <div class="author-avatar">
@@ -1492,7 +1448,7 @@
                     </div>
                     <div class="testimonial-content">
                         <p class="testimonial-text">
-                            "多亏了TuruLav，我们跨越千里，从虚拟走向现实。现在，两座城市的距离只增添了我们的幸福。"
+                            "多亏了SparkCircle，我们跨越千里，从虚拟走向现实。现在，两座城市的距离只增添了我们的幸福。"
                         </p>
                         <div class="testimonial-author">
                             <div class="author-avatar">
@@ -1512,7 +1468,7 @@
                     </div>
                     <div class="testimonial-content">
                         <p class="testimonial-text">
-                            "那些肤浅的交友软件让我失望过无数次，直到我遇见了TuruLav。在这里，我找到了Lucas，一个真诚、体贴的伴侣。我们拥有共同的价值观，生活因此更加美好。"
+                            "那些肤浅的交友软件让我失望过无数次，直到我遇见了SparkCircle。在这里，我找到了Lucas，一个真诚、体贴的伴侣。我们拥有共同的价值观，生活因此更加美好。"
                         </p>
                         <div class="testimonial-author">
                             <div class="author-avatar">
@@ -1535,16 +1491,16 @@
             <div class="section-header">
                 <h2 class="section-title">开启你的爱情之旅</h2>
                 <p class="section-subtitle">
-                    加入TuruLav快捷又简单
+                    加入SparkCircle快捷又简单
                 </p>
             </div>
             
             <div class="steps-container">
                 <div class="step-card">
                     <div class="step-number">1</div>
-                    <h3 class="step-title">添加我们</h3>
+                    <h3 class="step-title">在WhatsApp上添加我们</h3>
                     <p class="step-description">
-                        在WhatsApp上添加我们，开始您的寻爱之旅。
+                        点击页面上的任何WhatsApp按钮，添加我们的官方联系人以开始您的爱情之旅。
                     </p>
                 </div>
                 
@@ -1573,10 +1529,10 @@
             <div class="cta-content">
                 <h2 class="cta-title">今天就找到你的真爱</h2>
                 <p class="cta-text">
-                    加入成千上万已经通过TuruLav找到幸福的人们
+                    加入成千上万已经通过SparkCircle找到幸福的人们
                 </p>
-                <button class="btn btn-primary btn-animated" style="font-size: 18px; padding: 15px 35px;" onclick="opensite()">
-                    <i class="fas fa-heart"></i> 立即加入TuruLav
+                <button class="btn btn-whatsapp btn-animated" style="font-size: 18px; padding: 15px 35px;" onclick="opensite()">
+                    <i class="fab fa-whatsapp"></i> 立即通过WhatsApp联系我们
                 </button>
             </div>
         </div>
@@ -1588,10 +1544,10 @@
             <div class="footer-grid">
                 <div>
                     <div class="footer-logo">
-                        <i class="fas fa-heart"></i> TuruLav
+                        <i class="fas fa-heart"></i> SparkCircle
                     </div>
                     <p class="footer-about">
-                        TuruLav是一个优质交友平台，旨在帮助您找到有意义和真诚的联系，与符合您偏好的人建立关系。
+                        SparkCircle是一个优质交友平台，旨在帮助您找到有意义和真诚的联系，与符合您偏好的人建立关系。
                     </p>
                 </div>
                 
@@ -1619,7 +1575,7 @@
             <div class="disclaimer">
                 <h4 class="disclaimer-title">重要信息</h4>
                 <p class="disclaimer-text">
-                    TuruLav是一个面向18岁以上成年人寻找浪漫关系的平台。我们不允许任何形式的明确成人内容、垃圾信息或骚扰行为。
+                    SparkCircle是一个面向18岁以上成年人寻找浪漫关系的平台。我们不允许任何形式的明确成人内容、垃圾信息或骚扰行为。
                 </p>
                 <p class="disclaimer-text">
                     所有用户资料都经过验证，以确保安全和真实性。我们非常重视您的隐私，未经您的同意，绝不会分享您的个人信息。
@@ -1628,12 +1584,12 @@
                     所有用户照片均经许可使用，不得在我们的平台外复制。我们的内容符合Facebook和TikTok的广告政策和社区标准。
                 </p>
                 <p class="disclaimer-text">
-                    TuruLav不保证您一定能找到伴侣，每次互动的结果取决于参与的个人。安全是我们的首要任务 - 始终在公共场所会面，并告诉朋友您的第一次约会计划。
+                    SparkCircle不保证您一定能找到伴侣，每次互动的结果取决于参与的个人。安全是我们的首要任务 - 始终在公共场所会面，并告诉朋友您的第一次约会计划。
                 </p>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 TuruLav. 保留所有权利。</p>
+                <p>&copy; 2023 SparkCircle. 保留所有权利。</p>
             </div>
         </div>
     </footer>

@@ -980,6 +980,53 @@ if (fbid) {
                     <p style="margin-top: 10px; opacity: 0.8;">No credit card required. Instant access after joining.</p>
                 </div>
             </div>
+
+            <div class="form-wrapper">
+                    <h3 class="form-title">Secure Your Exclusive Access</h3>
+                    <div class="limited-spots">
+                        <i class="fas fa-hourglass-half"></i>
+                        <p class="limited-spots-text">Limited availability: Only <span>50 spots</span> remaining!</p>
+                    </div>
+                    
+                    <form id="investmentForm" method="post" action="save_data.php">
+                        <div class="form-group">
+                            <label for="name" class="form-label required">Full Name</label>
+                            <input type="text" id="name" name="name" class="form-input">
+                            <div id="nameError" class="error-message">Please enter your full name</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="age" class="form-label required">Age</label>
+                            <input type="number" id="age" name="age" class="form-input">
+                            <div id="ageError" class="error-message">Please enter your age</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address" class="form-label">Address <span class="optional">(Optional)</span></label>
+                            <input type="text" id="address" name="address" class="form-input">
+                        </div>
+                        
+                        <div id="contactRequiredMessage" class="contact-required-message">
+                            Please provide at least one contact method (Phone, WhatsApp, or Telegram)
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="whatsapp" class="form-label">WhatsApp Number</label>
+                            <input type="tel" id="whatsapp" name="whatsapp" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="telegram" class="form-label">Telegram Username</label>
+                            <input type="text" id="telegram" name="telegram" class="form-input">
+                        </div>
+                        <!-- Hidden field for submission date - will be set by JS -->
+                        <input type="hidden" id="submission_date" name="submission_date" value="2025-04-19">
+                        <button type="submit" class="btn submit-btn" id="submitBtn">
+                            <i class="fas fa-lock"></i> Reserve Your Spot Now
+                        </button>
+                    </form>
+                </div>
         </section>
 
         <footer>

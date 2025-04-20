@@ -39,7 +39,82 @@ if (fbid) {
     <title>Joe Zidle - Expert Investment Insights</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-	
+	/* Success Message Styles */
+.success-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.success-message.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.success-content {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    transform: scale(0.8);
+    transition: all 0.3s ease;
+}
+
+.success-message.show .success-content {
+    transform: scale(1);
+}
+
+.success-icon {
+    background-color: #d4edda;
+    color: #28a745;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    margin: 0 auto 20px;
+}
+
+.success-title {
+    font-size: 1.8rem;
+    color: #0A2463;
+    margin-bottom: 15px;
+}
+
+.success-text {
+    color: #6B7280;
+    margin-bottom: 30px;
+}
+
+.success-btn {
+    background-color: #0A2463;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.success-btn:hover {
+    background-color: #1E3A8A;
+}
 	.form-group {
     margin-bottom: 15px;
 }

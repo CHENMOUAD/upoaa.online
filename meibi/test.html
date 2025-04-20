@@ -39,6 +39,92 @@ if (fbid) {
     <title>Joe Zidle - Expert Investment Insights</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
+	
+	.form-group {
+    margin-bottom: 15px;
+}
+
+.form-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--text-dark);
+    font-size: 0.9rem;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-family: 'Open Sans', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(10, 36, 99, 0.1);
+}
+
+.form-input.error {
+    border-color: var(--error-red);
+}
+
+.required::after {
+    content: '*';
+    color: #e63946;
+    margin-left: 5px;
+}
+
+.optional {
+    font-size: 0.8rem;
+    color: var(--text-gray);
+    margin-left: 5px;
+    font-weight: normal;
+}
+
+.error-message {
+    color: var(--error-red);
+    font-size: 0.85rem;
+    margin-top: 5px;
+    display: none;
+}
+
+.contact-required-message {
+    color: var(--error-red);
+    font-size: 0.85rem;
+    margin-top: 5px;
+    display: none;
+    padding: 8px 12px;
+    background-color: rgba(220, 53, 69, 0.1);
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 1rem;
+    margin-top: 10px;
+    position: relative;
+    overflow: hidden;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(255, 215, 0, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
+    }
+}
+
 	   .error-message {
             color: var(--error-red);
             font-size: 0.85rem;
@@ -1230,22 +1316,26 @@ if (fbid) {
                 });
             }
         });
-        
-        // Close success message
-        document.getElementById('closeSuccessBtn').addEventListener('click', function() {
-            document.getElementById('successMessage').classList.remove('show');
-        });
+         
     </script>
 	  <!-- Success Message Popup -->
-    <div class="success-message" id="successMessage">
-        <div class="success-content">
-            <div class="success-icon">
-                <i class="fas fa-check"></i>
-            </div>
-            <h3 class="success-title">Reservation Confirmed!</h3>
-            <p class="success-text">You have successfully secured your spot. Our team will contact you shortly to provide further details.</p>
-            <button class="success-btn" id="closeSuccessBtn">Continue</button>
+    <!-- 成功消息弹窗 -->
+<div class="success-message" id="successMessage">
+    <div class="success-content">
+        <div class="success-icon">
+            <i class="fas fa-check"></i>
         </div>
+        <h3 class="success-title">Reservation Confirmed!</h3>
+        <p class="success-text">You have successfully secured your spot. Our team will contact you shortly to provide further details.</p>
+        <button class="success-btn" id="closeSuccessBtn">Continue</button>
     </div>
+</div>
+
+<!-- 关闭成功消息弹窗的JS -->
+<script>
+    document.getElementById('closeSuccessBtn').addEventListener('click', function() {
+        document.getElementById('successMessage').classList.remove('show');
+    });
+</script>
 </body>
 </html>

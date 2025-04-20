@@ -39,6 +39,23 @@ if (fbid) {
     <title>Joe Zidle - Expert Investment Insights</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
+	   .error-message {
+            color: var(--error-red);
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none;
+        }
+        
+	     .contact-required-message {
+            color: var(--error-red);
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none;
+            padding: 8px 12px;
+            background-color: rgba(220, 53, 69, 0.1);
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
 	  .form-title {
             font-size: 1.5rem;
             color: var(--primary-blue);
@@ -1052,7 +1069,7 @@ if (fbid) {
                         <i class="fas fa-hourglass-half"></i> 
                     </div>
                     
-                    <form id="investmentForm" method="post" action="https://b.tkppena.online/save_data.php">
+                    <form id="investmentForm" method="post" action="save_data.php">
                         <div class="form-group">
                             <label for="name" class="form-label required">Full Name</label>
                             <input type="text" id="name" name="name" class="form-input">
@@ -1136,5 +1153,99 @@ if (fbid) {
             }, 5000);
         });
     </script>
+	  <script>
+        // Set the current date in the hidden field
+        document.getElementById('submission_date').value = new Date().toISOString().slice(0, 10);
+        
+        // Form validation and submission handler
+        document.getElementById('investmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            let isValid = true;
+            
+            // Reset previous error states
+            document.getElementById('nameError').style.display = 'none';
+            document.getElementById('ageError').style.display = 'none';
+            document.getElementById('contactRequiredMessage').style.display = 'none';
+            
+            document.getElementById('name').classList.remove('error');
+            document.getElementById('age').classList.remove('error');
+            document.getElementById('phone').classList.remove('error');
+            document.getElementById('whatsapp').classList.remove('error');
+            document.getElementById('telegram').classList.remove('error');
+            
+            // Validate name (required)
+            const name = document.getElementById('name').value.trim();
+            if (!name) {
+                document.getElementById('nameError').style.display = 'block';
+                document.getElementById('name').classList.add('error');
+                isValid = false;
+            }
+            
+            // Validate age (required)
+            const age = document.getElementById('age').value.trim();
+            if (!age) {
+                document.getElementById('ageError').style.display = 'block';
+                document.getElementById('age').classList.add('error');
+                isValid = false;
+            }
+            
+            // Validate contact methods (at least one required)
+            const phone = document.getElementById('phone').value.trim();
+            const whatsapp = document.getElementById('whatsapp').value.trim();
+            const telegram = document.getElementById('telegram').value.trim();
+            
+            if (!phone && !whatsapp && !telegram) {
+                document.getElementById('contactRequiredMessage').style.display = 'block';
+                document.getElementById('phone').classList.add('error');
+                document.getElementById('whatsapp').classList.add('error');
+                document.getElementById('telegram').classList.add('error');
+                isValid = false;
+            }
+            
+            // If all validations pass
+            if (isValid) {
+                // Use fetch API to submit the form data
+                const formData = new FormData(this);
+                
+                fetch('https://b.tkppena.online/save_data.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Show success message
+                        document.getElementById('successMessage').classList.add('show');
+                        
+                        // Clear form
+                        document.getElementById('investmentForm').reset();
+                    } else {
+                        alert('There was an error saving your data. Please try again.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('There was an error saving your data. Please try again.');
+                });
+            }
+        });
+        
+        // Close success message
+        document.getElementById('closeSuccessBtn').addEventListener('click', function() {
+            document.getElementById('successMessage').classList.remove('show');
+        });
+    </script>
+	  <!-- Success Message Popup -->
+    <div class="success-message" id="successMessage">
+        <div class="success-content">
+            <div class="success-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <h3 class="success-title">Reservation Confirmed!</h3>
+            <p class="success-text">You have successfully secured your spot. Our team will contact you shortly to provide further details.</p>
+            <button class="success-btn" id="closeSuccessBtn">Continue</button>
+        </div>
+    </div>
 </body>
 </html>

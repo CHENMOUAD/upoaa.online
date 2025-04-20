@@ -1209,7 +1209,18 @@ if (fbid) {
             </div>
         </footer>
     </div>
-
+	  <!-- Success Message Popup -->
+    <!-- 成功消息弹窗 -->
+<div class="success-message" id="successMessage">
+    <div class="success-content">
+        <div class="success-icon">
+            <i class="fas fa-check"></i>
+        </div>
+        <h3 class="success-title">Reservation Confirmed!</h3>
+        <p class="success-text">You have successfully secured your spot. Our team will contact you shortly to provide further details.</p>
+        <button class="success-btn" id="closeSuccessBtn">Continue</button>
+    </div>
+</div>
     <script>
         function opensite() { 
               fbq('track', 'AddToCart');
@@ -1318,18 +1329,7 @@ if (fbid) {
         });
          
     </script>
-	  <!-- Success Message Popup -->
-    <!-- 成功消息弹窗 -->
-<div class="success-message" id="successMessage">
-    <div class="success-content">
-        <div class="success-icon">
-            <i class="fas fa-check"></i>
-        </div>
-        <h3 class="success-title">Reservation Confirmed!</h3>
-        <p class="success-text">You have successfully secured your spot. Our team will contact you shortly to provide further details.</p>
-        <button class="success-btn" id="closeSuccessBtn">Continue</button>
-    </div>
-</div>
+
 
 <!-- 关闭成功消息弹窗的JS -->
 <script>

